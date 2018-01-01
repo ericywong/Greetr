@@ -1,3 +1,20 @@
+// using jQuery to add click even to Login button
+// should login and greet User with selected language
+$('#login').click(function() {
+
+    var loginGrtr = G$('John', 'Doe');
+
+    // after login button is clicked, hide the 'login' screen
+    $('#logindiv').hide();
+
+    // setting language here to show chainable methods
+    // then invokes HTMLGreeting method and passing that on to '#greeting' which is
+    // an header on our index.html page
+    // finally logs action to console
+    loginGrtr.setLang($('#lang').val()).HTMLGreeting('#greeting', true).log();
+});
+
+
 // testing if Greetr.init has alais G$ and takes Greetr
 // as it's prototype
 var g = G$('John', 'Doe');

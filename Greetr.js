@@ -1,14 +1,16 @@
-(function ( global, $ ) {
+;(function ( global, $ ) {
 
+    // 'new' is a new object
     var Greetr = function( firstName, lastName, language ) {
       return new Greetr.init( firstName, lastName, language );
     }
 
     // variable still within Greetr.init's lexical environment
-    // therefore within reach of the Greetr.init function
+    // therefore within reach of the Greetr.init function.
+    // (hidden within the scope of IIFE and never directly accessible)
     var supportedLangs = [ 'en', 'es', '日本語', '中文' ];
 
-    // creating regular and formal greeting objects
+    // creating informal greeting objects
     // (to be referenced not as an array but as name/value pairs)
     // (stored as undefined in the memory until called)
     var greetings = {
@@ -18,6 +20,7 @@
         中文: '你好'
     };
 
+    // formal greeting objects
     var formalGreetings = {
       en: 'Greetings',
       es: 'Saludos',
@@ -25,7 +28,7 @@
       中文: '您好'
     };
 
-    // To keep track of num of messages yused
+    // To keep track of num of messages used | logs messages
     var logMessages = {
       en: 'Logged in',
       es: 'Inició sesión',
@@ -37,6 +40,7 @@
     // methonds here will be exposed for users to utilize
     Greetr.prototype = {
 
+      // returns full name
       fullName: function() {
           return this.firstName + ' ' + this.lastName;
       },
@@ -79,6 +83,7 @@
         return this;
       },
 
+      // logs the function
       log: function() {
           if (console) {
               console.log(logMessages[this.language] + ': ' + this.fullName());
@@ -97,7 +102,7 @@
       },
 
       // jQuery support for greetings
-      HTMLgreeting: function( selector, formal) {
+      HTMLGreeting: function( selector, formal) {
           if (!$) {
             throw 'jQuery not loaded';
           }
@@ -128,6 +133,8 @@
         self.firstName = firstName || '';
         self.lastName = lastName || '';
         self.language = language || 'en';
+
+        self.validate();
     }
 
     // setting the prototype of Greetr.init to Greetr.protoype so the JavaScript
