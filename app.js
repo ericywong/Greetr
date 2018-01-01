@@ -4,7 +4,7 @@ var g = G$('John', 'Doe');
 console.log(g);
 
 var h = G$('Jason', 'Doe');
-h.greet().greet(true);
+h.greet().greet(true).log();
 
 // Spanish with on-the-fly chain
 var s = G$('Jane', 'Doe');

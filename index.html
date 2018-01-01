@@ -6,12 +6,21 @@
   </head>
   <body>
 
+      <div id="logindiv">
+          <select id='lang'>
+            <option value='en'>English</option>
+            <option value='es'>Español</option>
+            <option value='日本語'>日本語</option>
+            <option value='中文'>中文</option>
+          </select>
+          <input type="button" value="Login" id="login" />
+      </div>
+
+      <h1 id='greeting'></h1>
       <!-- includes jquery because we want jquery support for our library -->
       <script src="jquery-3.2.1.js"></script>
-
       <!-- Greetr is the library we are creating -->
       <script src="Greetr.js"></script>
-
       <!-- file where we use our library -->
       <script src="app.js"></script>
 

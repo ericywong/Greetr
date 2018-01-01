@@ -94,7 +94,32 @@
           this.validate();
 
           return this;
+      },
+
+      // jQuery support for greetings
+      HTMLgreeting: function( selector, formal) {
+          if (!$) {
+            throw 'jQuery not loaded';
+          }
+
+          if (!selector) {
+            throw 'missing jQuery selector';
+          }
+
+          // not DRY: can place this in its own function and invoke it
+          var msg;
+          if (formal) {
+            msg = this.formalGreeting();
+          }
+          else {
+            msg = this.greeting();
+          }
+
+          $(selector).html(msg);
+
+          return this;
       }
+
     };
 
     Greetr.init = function( firstName, lastName, language ) {
